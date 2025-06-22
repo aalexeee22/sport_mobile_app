@@ -7,7 +7,7 @@ import com.example.sport_app.data.models.UserEntityModel
 
 @Database(
     entities = [UserEntityModel::class],
-    version = 3
+    version = 4
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract val userDAO: UserDAO
