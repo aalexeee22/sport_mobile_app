@@ -8,6 +8,10 @@ android {
     namespace = "com.example.sport_app"
     compileSdk = 35
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.example.sport_app"
         minSdk = 26

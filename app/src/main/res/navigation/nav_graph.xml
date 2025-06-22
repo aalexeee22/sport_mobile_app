@@ -23,9 +23,19 @@
             android:id="@+id/action_register_to_login"
             app:destination="@id/loginFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.sport_app.HomeFragment"
         android:label="Home">
+
+        <action
+            android:id="@+id/action_homeFragment_to_addWorkoutFragment"
+            app:destination="@id/addWorkoutFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/addWorkoutFragment"
+        android:name="com.example.sport_app.AddWorkoutFragment"
+        android:label="Add Workout" />
 </navigation>
