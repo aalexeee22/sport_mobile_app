@@ -12,4 +12,9 @@ object UserRepository {
             ApplicationController.instance?.appDatabase?.userDAO?.insert(entityModel)
         }
     }
+
+    suspend fun login(email: String, password: String): UserEntityModel? {
+        return ApplicationController.instance?.appDatabase?.userDAO?.getUser(email, password)
+    }
+
 }

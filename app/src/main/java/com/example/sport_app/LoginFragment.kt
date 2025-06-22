@@ -8,7 +8,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.sport_app.data.repositories.UserRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class LoginFragment : Fragment() {
     override fun onCreateView(
@@ -31,7 +36,19 @@ class LoginFragment : Fragment() {
                 Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
             } else {
                 // TODO: Add real login logic
-                Toast.makeText(requireContext(), "Logging in as $email", Toast.LENGTH_SHORT).show()
+                lifecycleScope.launch(Dispatchers.IO) {
+                    val user = UserRepository.login(email, password)
+                    withContext(Dispatchers.Main) {
+                        if (user != null) {
+                            Toast.makeText(requireContext(), "Welcome back, ${user.fullname}!", Toast.LENGTH_SHORT).show()
+                            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                        } else {
+                            Toast.makeText(requireContext(), "Wrong email or password!", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+
+                //Toast.makeText(requireContext(), "Logging in as $email", Toast.LENGTH_SHORT).show()
                 // Example navigation: findNavController().navigate(R.id.action_login_to_home)
             }
         }

@@ -22,9 +22,8 @@ class ApplicationController : Application() {
     private fun initDatabase() {
         appDatabase = Room.databaseBuilder(
             context = this,
-//            klass = appDatabase::class.java,
             klass = AppDatabase::class.java,
-            name = "localRoomDatabase"
+            name = "localDatabase"
         )
             .fallbackToDestructiveMigration()
             .build()
