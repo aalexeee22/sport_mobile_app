@@ -12,6 +12,7 @@ class ApplicationController : Application() {
 
     lateinit var appDatabase: AppDatabase
 
+
     override fun onCreate() {
         super.onCreate()
         instance = this
@@ -21,7 +22,8 @@ class ApplicationController : Application() {
     private fun initDatabase() {
         appDatabase = Room.databaseBuilder(
             context = this,
-            klass = appDatabase::class.java,
+//            klass = appDatabase::class.java,
+            klass = AppDatabase::class.java,
             name = "localRoomDatabase"
         )
             .fallbackToDestructiveMigration()

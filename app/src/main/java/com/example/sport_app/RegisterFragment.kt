@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.sport_app.data.models.UserEntityModel
+import com.example.sport_app.data.repositories.UserRepository
+import kotlinx.coroutines.delay
 
 class RegisterFragment : Fragment() {
     override fun onCreateView(
@@ -16,6 +19,8 @@ class RegisterFragment : Fragment() {
     ): View? = inflater.inflate(R.layout.fragment_register, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         val nameInput = view.findViewById<EditText>(R.id.name_input)
         val emailInput = view.findViewById<EditText>(R.id.email_input)
         val passwordInput = view.findViewById<EditText>(R.id.password_input)
@@ -39,6 +44,10 @@ class RegisterFragment : Fragment() {
                 else -> {
                     // TODO: Salvează datele sau trimite-le la server
                     Toast.makeText(requireContext(), "Cont creat pentru $name", Toast.LENGTH_SHORT).show()
+
+                    // SAVE IN ROOM LOGIC
+                    UserRepository.insert(UserEntityModel(fullname = name, email = email, password = password))
+
                     findNavController().navigate(R.id.action_register_to_login)
                 }
             }
