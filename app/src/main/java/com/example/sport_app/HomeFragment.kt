@@ -29,7 +29,12 @@ class HomeFragment : Fragment() {
         // Afisam numele utilizatorului curent, daca exista
         val currentUser = ApplicationController.currentUser
         if (currentUser != null) {
-            binding.textUsername.text = "Bine ai revenit, ${currentUser.fullname}"
+            binding.textUsername.text = "Welcome, ${currentUser.fullname}!"
+        }
+
+
+        binding.buttonAddWorkout.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_addWorkoutFragment)
         }
 
         // Buton Logout
@@ -37,10 +42,6 @@ class HomeFragment : Fragment() {
             SessionManager.clearSession(requireContext())
             ApplicationController.currentUser = null
             findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
-        }
-
-        binding.buttonAddWorkout.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_addWorkoutFragment)
         }
     }
 
