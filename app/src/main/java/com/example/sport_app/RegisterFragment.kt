@@ -11,7 +11,6 @@ import com.example.sport_app.data.models.UserEntityModel
 import com.example.sport_app.data.repositories.UserRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class RegisterFragment : Fragment() {
@@ -50,7 +49,7 @@ class RegisterFragment : Fragment() {
                         .show()
 
                 else -> {
-                    //logica de verificare email si salvare user
+                    // Logica de verificare email și salvare user
                     CoroutineScope(Dispatchers.IO).launch {
                         val existingUser = UserRepository.getUserByEmail(email)
 
@@ -83,10 +82,10 @@ class RegisterFragment : Fragment() {
                     }
                 }
             }
+        }
 
-            goToLogin.setOnClickListener {
-                findNavController().navigate(R.id.action_register_to_login)
-            }
+        goToLogin.setOnClickListener {
+            findNavController().navigate(R.id.action_register_to_login)
         }
     }
 }
