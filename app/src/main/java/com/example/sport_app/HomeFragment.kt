@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.sport_app.databinding.FragmentHomeBinding
+import com.example.sport_app.utils.SessionManager
 
 class HomeFragment : Fragment() {
 
@@ -24,6 +25,19 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Afisam numele utilizatorului curent, daca exista
+        val currentUser = ApplicationController.currentUser
+        if (currentUser != null) {
+            binding.textUsername.text = "Bine ai revenit, ${currentUser.fullname}"
+        }
+
+        // Buton Logout
+        binding.buttonLogout.setOnClickListener {
+            SessionManager.clearSession(requireContext())
+            ApplicationController.currentUser = null
+            findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
+        }
 
         binding.buttonAddWorkout.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_addWorkoutFragment)

@@ -11,9 +11,13 @@ import kotlinx.coroutines.launch
 object UserRepository {
     fun insert(entityModel: UserEntityModel){
         CoroutineScope(Dispatchers.IO).launch {
-            val hashedPassword = hashPassword(entityModel.password)
-            val userWithHashedPassword = entityModel.copy(password = hashedPassword)
-            ApplicationController.instance?.appDatabase?.userDAO?.insert(userWithHashedPassword)
+            try {
+                val hashedPassword = hashPassword(entityModel.password)
+                val userWithHashedPassword = entityModel.copy(password = hashedPassword)
+                ApplicationController.instance?.appDatabase?.userDAO?.insert(userWithHashedPassword)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 
@@ -30,4 +34,7 @@ object UserRepository {
         return BCrypt.verifyer().verify(plainPassword.toCharArray(), hashedPassword).verified
     }
 
+    suspend fun getUserByEmail(email: String): UserEntityModel? {
+        return ApplicationController.instance?.appDatabase?.userDAO?.getUserByEmail(email)
+    }
 }

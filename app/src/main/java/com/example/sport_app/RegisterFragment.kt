@@ -9,7 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.sport_app.data.models.UserEntityModel
 import com.example.sport_app.data.repositories.UserRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class RegisterFragment : Fragment() {
     override fun onCreateView(
@@ -36,25 +39,54 @@ class RegisterFragment : Fragment() {
 
             when {
                 name.isBlank() || email.isBlank() || password.isBlank() || confirmPassword.isBlank() ->
-                    Toast.makeText(requireContext(), "Completează toate câmpurile", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "Completează toate câmpurile",
+                        Toast.LENGTH_SHORT
+                    ).show()
 
                 password != confirmPassword ->
-                    Toast.makeText(requireContext(), "Parolele nu coincid", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Parolele nu coincid", Toast.LENGTH_SHORT)
+                        .show()
 
                 else -> {
-                    // TODO: Salvează datele sau trimite-le la server
-                    Toast.makeText(requireContext(), "Cont creat pentru $name", Toast.LENGTH_SHORT).show()
+                    //logica de verificare email si salvare user
+                    CoroutineScope(Dispatchers.IO).launch {
+                        val existingUser = UserRepository.getUserByEmail(email)
 
-                    // SAVE IN ROOM LOGIC
-                    UserRepository.insert(UserEntityModel(fullname = name, email = email, password = password))
+                        if (existingUser != null) {
+                            launch(Dispatchers.Main) {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Emailul este deja folosit.",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        } else {
+                            UserRepository.insert(
+                                UserEntityModel(
+                                    fullname = name,
+                                    email = email,
+                                    password = password
+                                )
+                            )
 
-                    findNavController().navigate(R.id.action_register_to_login)
+                            launch(Dispatchers.Main) {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Cont creat pentru $name",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                findNavController().navigate(R.id.action_register_to_login)
+                            }
+                        }
+                    }
                 }
             }
-        }
 
-        goToLogin.setOnClickListener {
-            findNavController().navigate(R.id.action_register_to_login)
+            goToLogin.setOnClickListener {
+                findNavController().navigate(R.id.action_register_to_login)
+            }
         }
     }
 }

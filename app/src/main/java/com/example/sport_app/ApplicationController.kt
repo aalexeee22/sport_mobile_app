@@ -3,11 +3,14 @@ package com.example.sport_app
 import android.app.Application
 import androidx.room.Room
 import com.example.sport_app.data.AppDatabase
+import com.example.sport_app.data.models.UserEntityModel
 
 class ApplicationController : Application() {
     companion object {
         var instance: ApplicationController? = null
             private set
+
+        var currentUser: UserEntityModel? = null // aici ținem userul logat
     }
 
     lateinit var appDatabase: AppDatabase

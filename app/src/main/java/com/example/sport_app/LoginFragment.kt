@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.sport_app.data.repositories.UserRepository
+import com.example.sport_app.utils.SessionManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -23,6 +24,21 @@ class LoginFragment : Fragment() {
     ): View? = inflater.inflate(R.layout.fragment_login, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        if (SessionManager.isLoggedIn(requireContext())) {
+            val email = SessionManager.getLoggedInEmail(requireContext())
+            lifecycleScope.launch(Dispatchers.IO) {
+                val user = email?.let { UserRepository.getUserByEmail(it) }
+                if (user != null) {
+                    ApplicationController.currentUser = user
+                    withContext(Dispatchers.Main) {
+                        findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                    }
+                }
+            }
+            return // oprește execuția restului de onViewCreated
+        }
+
         val emailInput = view.findViewById<EditText>(R.id.email_input)
         val passwordInput = view.findViewById<EditText>(R.id.password_input)
         val loginButton = view.findViewById<Button>(R.id.login_button)
@@ -35,11 +51,12 @@ class LoginFragment : Fragment() {
             if (email.isBlank() || password.isBlank()) {
                 Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
             } else {
-                // TODO: Add real login logic
                 lifecycleScope.launch(Dispatchers.IO) {
                     val user = UserRepository.login(email, password)
                     withContext(Dispatchers.Main) {
                         if (user != null) {
+                            ApplicationController.currentUser = user // salveaza userul actual pe sesiune
+                            SessionManager.saveLoginSession(requireContext(), user.email)
                             Toast.makeText(requireContext(), "Welcome back, ${user.fullname}!", Toast.LENGTH_SHORT).show()
                             findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                         } else {
