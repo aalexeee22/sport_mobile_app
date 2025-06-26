@@ -37,6 +37,20 @@
         android:inputType="number"
         android:layout_marginBottom="16dp" />
 
+    <Button
+        android:id="@+id/buttonSelectDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Date" />
+
+    <TextView
+        android:id="@+id/textViewSelectedDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No date selected"
+        android:layout_marginTop="8dp" />
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -63,5 +77,6 @@
             app:cornerRadius="16dp"
             app:rippleColor="#D32F2F"
             android:padding="16dp" />
+
     </LinearLayout>
 </LinearLayout>

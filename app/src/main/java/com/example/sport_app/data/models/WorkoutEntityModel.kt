@@ -20,5 +20,6 @@ data class WorkoutEntityModel(
     val title: String,
     val description: String,
     val repetitions: Int,
-    val userId: Long
+    val userId: Long,
+    val date: String
 )
