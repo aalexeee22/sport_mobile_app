@@ -58,7 +58,7 @@ class LoginFragment : Fragment() {
                         if (user != null) {
                             ApplicationController.currentUser = user // salveaza userul actual pe sesiune
                             SessionManager.saveLoginSession(requireContext(), user.email)
-                            Toast.makeText(requireContext(), "Welcome back, ${user.fullname}!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), "Welcome, ${user.fullname}!", Toast.LENGTH_SHORT).show()
                             findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                         } else {
                             Toast.makeText(requireContext(), "Wrong email or password!", Toast.LENGTH_SHORT).show()
