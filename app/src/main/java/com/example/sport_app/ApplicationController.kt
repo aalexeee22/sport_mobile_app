@@ -10,7 +10,7 @@ class ApplicationController : Application() {
         var instance: ApplicationController? = null
             private set
 
-        var currentUser: UserEntityModel? = null // aici ținem userul logat
+        var currentUser: UserEntityModel? = null // aici tinem userul logat
     }
 
     lateinit var appDatabase: AppDatabase

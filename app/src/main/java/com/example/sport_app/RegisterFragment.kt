@@ -49,7 +49,7 @@ class RegisterFragment : Fragment() {
                         .show()
 
                 else -> {
-                    // Logica de verificare email și salvare user
+                    //logica de verificare email si salvare user
                     CoroutineScope(Dispatchers.IO).launch {
                         val existingUser = UserRepository.getUserByEmail(email)
 

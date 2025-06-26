@@ -32,7 +32,7 @@ class AddWorkoutFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // 📅 Date Picker logic
+        // Date Picker logic
         binding.buttonSelectDate.setOnClickListener {
             val calendar = Calendar.getInstance()
             val datePicker = DatePickerDialog(

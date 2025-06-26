@@ -26,19 +26,18 @@ class WorkoutAdapter(
             binding.textViewTitle.text = workout.title
             binding.textViewDescription.text = workout.description
 
-            // Bold "Repetitions:" label
+            // bold "Repetitions:" label
             val repetitionsLabel = SpannableString("Repetitions: ")
             repetitionsLabel.setSpan(StyleSpan(Typeface.BOLD), 0, repetitionsLabel.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
             binding.textViewRepetitions.text = repetitionsLabel
             binding.textViewRepetitions.append("${workout.repetitions}")
 
-            // Bold "Date:" label
+            // bold "Date:" label
             val dateLabel = SpannableString("Date: ")
             dateLabel.setSpan(StyleSpan(Typeface.BOLD), 0, dateLabel.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
             binding.textViewDate.text = dateLabel
             binding.textViewDate.append(workout.date)
 
-            // ✅ Delete button click
             binding.buttonDeleteWorkout.setOnClickListener {
                 onDeleteClick(workout)
             }
