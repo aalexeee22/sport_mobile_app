@@ -12,5 +12,13 @@ object RetrofitInstance {
             .build()
             .create(SportApi::class.java)
     }
+    val mathApi: BmiApi by lazy {
+        Retrofit.Builder()
+            .baseUrl("https://api.mathjs.org/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(BmiApi::class.java)
+    }
+
 
 }

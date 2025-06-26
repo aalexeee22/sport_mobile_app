@@ -48,12 +48,26 @@
             android:background="@drawable/button_selector"
             android:textColor="@color/text_color_selector"
             android:padding="12dp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="24dp">
         <Button
             android:id="@+id/buttonExercises"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="View Exercises" />
 
+        <Button
+            android:id="@+id/buttonBmi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BMI Calculator"
+             />
     </LinearLayout>
     <!-- 🟩 Buton de logout -->
     <Button

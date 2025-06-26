@@ -41,6 +41,10 @@
         <action
             android:id="@+id/action_homeFragment_to_exerciseFragment"
             app:destination="@id/exerciseFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_bmiFragment"
+            app:destination="@id/bmiFragment" />
+
     </fragment>
 
     <fragment
@@ -57,5 +61,17 @@
         android:id="@+id/exerciseFragment"
         android:name="com.example.sport_app.ExerciseFragment"
         android:label="Exercises" />
+
+    <fragment
+        android:id="@+id/bmiFragment"
+        android:name="com.example.sport_app.BmiFragment"
+        android:label="BMI Calculator">
+
+        <action
+            android:id="@+id/action_bmiFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
+
 
 </navigation>

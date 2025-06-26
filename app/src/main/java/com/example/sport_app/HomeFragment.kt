@@ -43,6 +43,10 @@ class HomeFragment : Fragment() {
         binding.buttonExercises.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_exerciseFragment)
         }
+        binding.buttonBmi.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_bmiFragment)
+        }
+
 
 
         // Buton Logout
