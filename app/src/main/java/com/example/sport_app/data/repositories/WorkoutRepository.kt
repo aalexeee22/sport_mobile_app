@@ -32,4 +32,19 @@ object WorkoutRepository {
             }
         }
     }
+
+    //sterge un workout
+    fun deleteWorkout(workout: WorkoutEntityModel, onSuccess: () -> Unit) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                ApplicationController.instance?.appDatabase?.workoutDAO?.deleteWorkout(workout)
+                withContext(Dispatchers.Main) {
+                    onSuccess()
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
 }

@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sport_app.data.models.WorkoutEntityModel
 import com.example.sport_app.databinding.ItemWorkoutBinding
 
-class WorkoutAdapter : RecyclerView.Adapter<WorkoutAdapter.WorkoutViewHolder>() {
+class WorkoutAdapter(
+    private val onDeleteClick: (WorkoutEntityModel) -> Unit // ✅ Pass delete function from fragment
+) : RecyclerView.Adapter<WorkoutAdapter.WorkoutViewHolder>() {
 
     private var workoutList: List<WorkoutEntityModel> = emptyList()
 
@@ -35,6 +37,11 @@ class WorkoutAdapter : RecyclerView.Adapter<WorkoutAdapter.WorkoutViewHolder>() 
             dateLabel.setSpan(StyleSpan(Typeface.BOLD), 0, dateLabel.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
             binding.textViewDate.text = dateLabel
             binding.textViewDate.append(workout.date)
+
+            // ✅ Delete button click
+            binding.buttonDeleteWorkout.setOnClickListener {
+                onDeleteClick(workout)
+            }
         }
     }
 
