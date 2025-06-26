@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.sport_app.data.models.WorkoutEntityModel
+import com.example.sport_app.data.repositories.WorkoutRepository
 import com.example.sport_app.databinding.FragmentAddWorkoutBinding
 
 class AddWorkoutFragment : Fragment() {
@@ -28,12 +30,25 @@ class AddWorkoutFragment : Fragment() {
 
         binding.buttonSubmitWorkout.setOnClickListener {
             val title = binding.editTextTitle.text.toString()
-            val workout = binding.editTextWorkout.text.toString()
 
-            if (title.isNotEmpty() && workout.isNotEmpty()) {
+            //an modificat numele campului din workout in description
+            val description  = binding.editTextDescription.text.toString()
 
-                // ✅ TODO: Aici salvează datele local (Room sau SharedPreferences)
-                // Sau apelează API-ul pentru salvare pe backend (cerinta cu requests)
+            // am adaugat si repetitions ca sa aibe mai mult sens
+            val repetitions = binding.editTextRepetitions.text.toString().toIntOrNull()
+
+            val currentUser = ApplicationController.currentUser //utilizatorul logat
+
+            if (title.isNotEmpty() && description.isNotEmpty() && repetitions != null && currentUser != null) {
+
+                val workout = WorkoutEntityModel(
+                    title = title,
+                    description = description,
+                    repetitions = repetitions,
+                    userId = currentUser.id
+                )
+
+                WorkoutRepository.insertWorkout(workout)
 
                 Toast.makeText(requireContext(), "Workout saved: $title", Toast.LENGTH_SHORT).show()
                 findNavController().navigate(R.id.homeFragment)
