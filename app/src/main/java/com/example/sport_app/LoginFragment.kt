@@ -50,7 +50,7 @@ class LoginFragment : Fragment() {
             val password = passwordInput.text.toString()
 
             if (email.isBlank() || password.isBlank()) {
-                Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Please fill in all fields!", Toast.LENGTH_SHORT).show()
             } else {
                 lifecycleScope.launch(Dispatchers.IO) {
                     val user = UserRepository.login(email, password)

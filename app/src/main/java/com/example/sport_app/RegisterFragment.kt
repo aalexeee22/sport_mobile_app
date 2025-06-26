@@ -40,12 +40,12 @@ class RegisterFragment : Fragment() {
                 name.isBlank() || email.isBlank() || password.isBlank() || confirmPassword.isBlank() ->
                     Toast.makeText(
                         requireContext(),
-                        "Completează toate câmpurile",
+                        "Please fill in all fields!",
                         Toast.LENGTH_SHORT
                     ).show()
 
                 password != confirmPassword ->
-                    Toast.makeText(requireContext(), "Parolele nu coincid", Toast.LENGTH_SHORT)
+                    Toast.makeText(requireContext(), "Passwords do not match!", Toast.LENGTH_SHORT)
                         .show()
 
                 else -> {
@@ -57,7 +57,7 @@ class RegisterFragment : Fragment() {
                             launch(Dispatchers.Main) {
                                 Toast.makeText(
                                     requireContext(),
-                                    "Emailul este deja folosit.",
+                                    "Email already used.",
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
@@ -73,7 +73,7 @@ class RegisterFragment : Fragment() {
                             launch(Dispatchers.Main) {
                                 Toast.makeText(
                                     requireContext(),
-                                    "Cont creat pentru $name",
+                                    "Account created for $name",
                                     Toast.LENGTH_SHORT
                                 ).show()
                                 findNavController().navigate(R.id.action_register_to_login)

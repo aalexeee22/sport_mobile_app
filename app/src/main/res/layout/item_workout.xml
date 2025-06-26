@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:elevation="4dp"
-    android:padding="12dp">
+    android:elevation="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="24dp"> <!-- Padding adăugat aici -->
 
         <TextView
             android:id="@+id/textViewTitle"
@@ -31,16 +31,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp" />
 
-        <!-- ✅ Date Field Added -->
+        <!-- data -->
         <TextView
             android:id="@+id/textViewDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp" />
+
         <Button
             android:id="@+id/buttonDeleteWorkout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="#FF5252"
             android:text="Delete"
             android:layout_marginTop="8dp" />
 

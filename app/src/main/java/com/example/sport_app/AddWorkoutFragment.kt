@@ -72,7 +72,7 @@ class AddWorkoutFragment : Fragment() {
                 findNavController().navigate(R.id.homeFragment)
 
             } else {
-                Toast.makeText(requireContext(), "Please fill all fields and select a date", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Please fill all fields and select a date!", Toast.LENGTH_SHORT).show()
             }
         }
 
