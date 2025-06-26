@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.sport_app.data.repositories.UserRepository
 import com.example.sport_app.utils.SessionManager
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -25,10 +26,10 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        if (SessionManager.isLoggedIn(requireContext())) {
-            val email = SessionManager.getLoggedInEmail(requireContext())
+        val email = SessionManager.getLoggedInEmail(requireContext())
+        if (!email.isNullOrEmpty()) {
             lifecycleScope.launch(Dispatchers.IO) {
-                val user = email?.let { UserRepository.getUserByEmail(it) }
+                val user = UserRepository.getUserByEmail(email)
                 if (user != null) {
                     ApplicationController.currentUser = user
                     withContext(Dispatchers.Main) {
@@ -36,8 +37,8 @@ class LoginFragment : Fragment() {
                     }
                 }
             }
-            return // oprește execuția restului de onViewCreated
         }
+
 
         val emailInput = view.findViewById<EditText>(R.id.email_input)
         val passwordInput = view.findViewById<EditText>(R.id.password_input)

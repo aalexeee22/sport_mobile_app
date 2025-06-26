@@ -7,7 +7,7 @@
     android:padding="16dp">
 
     <TextView
-        android:text="Add Workout"
+        android:text="Add Exercise"
         android:textSize="24sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,16 +16,25 @@
 
     <EditText
         android:id="@+id/editTextTitle"
-        android:hint="Title"
+        android:hint="Name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp" />
 
     <EditText
-        android:id="@+id/editTextWorkout"
-        android:hint="Workout"
+        android:id="@+id/editTextDescription"
+        android:hint="Description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp" />
+
+    <!-- 🟩 Adăugat câmp pentru numărul de repetări -->
+    <EditText
+        android:id="@+id/editTextRepetitions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Reps"
+        android:inputType="number"
         android:layout_marginBottom="16dp" />
 
     <LinearLayout
@@ -34,7 +43,6 @@
         android:orientation="horizontal"
         android:gravity="center">
 
-        <!-- Submit button -->
         <Button
             android:id="@+id/buttonSubmitWorkout"
             android:layout_width="wrap_content"
@@ -55,7 +63,5 @@
             app:cornerRadius="16dp"
             app:rippleColor="#D32F2F"
             android:padding="16dp" />
-
     </LinearLayout>
-
 </LinearLayout>
