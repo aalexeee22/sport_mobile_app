@@ -40,6 +40,10 @@ class HomeFragment : Fragment() {
         binding.buttonViewWorkouts.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_viewWorkoutFragment)
         }
+        binding.buttonExercises.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_exerciseFragment)
+        }
+
 
         // Buton Logout
         binding.buttonLogout.setOnClickListener {

@@ -38,6 +38,9 @@
         <action
             android:id="@+id/action_homeFragment_to_viewWorkoutFragment"
             app:destination="@id/viewWorkoutFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_exerciseFragment"
+            app:destination="@id/exerciseFragment" />
     </fragment>
 
     <fragment
@@ -49,5 +52,10 @@
         android:id="@+id/viewWorkoutFragment"
         android:name="com.example.sport_app.ViewWorkoutFragment"
         android:label="View Workouts" />
+
+    <fragment
+        android:id="@+id/exerciseFragment"
+        android:name="com.example.sport_app.ExerciseFragment"
+        android:label="Exercises" />
 
 </navigation>

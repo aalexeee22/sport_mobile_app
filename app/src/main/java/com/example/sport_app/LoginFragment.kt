@@ -66,8 +66,6 @@ class LoginFragment : Fragment() {
                     }
                 }
 
-                //Toast.makeText(requireContext(), "Logging in as $email", Toast.LENGTH_SHORT).show()
-                // Example navigation: findNavController().navigate(R.id.action_login_to_home)
             }
         }
 
