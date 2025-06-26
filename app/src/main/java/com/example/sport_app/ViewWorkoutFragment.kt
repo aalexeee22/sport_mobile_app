@@ -29,6 +29,10 @@ class ViewWorkoutFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.buttonBackHome.setOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
+
         adapter = WorkoutAdapter()
         binding.recyclerViewWorkouts.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerViewWorkouts.adapter = adapter
