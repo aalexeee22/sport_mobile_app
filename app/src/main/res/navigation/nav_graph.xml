@@ -60,7 +60,13 @@
     <fragment
         android:id="@+id/exerciseFragment"
         android:name="com.example.sport_app.ExerciseFragment"
-        android:label="Exercises" />
+        android:label="Exercises">
+
+        <action
+            android:id="@+id/action_exerciseFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
 
     <fragment
         android:id="@+id/bmiFragment"
