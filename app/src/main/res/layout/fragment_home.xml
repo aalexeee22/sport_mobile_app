@@ -17,64 +17,58 @@
 
     <!-- Text existent -->
     <TextView
-        android:text="Home menu"
+        android:text="Home Menu"
         android:textSize="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp" />
 
-    <LinearLayout
+    <!-- Butoanele cu spatiu mic -->
+    <Button
+        android:id="@+id/button_add_workout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginBottom="24dp">
+        android:text="Add Workout"
+        android:background="@drawable/button_selector"
+        android:textColor="@color/text_color_selector"
+        android:padding="12dp"
+        android:layout_marginBottom="8dp" />
 
-        <Button
-            android:id="@+id/button_add_workout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add Workout"
-            android:background="@drawable/button_selector"
-            android:textColor="@color/text_color_selector"
-            android:padding="12dp"
-            android:layout_marginEnd="16dp" />
-
-        <Button
-            android:id="@+id/button_view_workouts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="View Workouts"
-            android:background="@drawable/button_selector"
-            android:textColor="@color/text_color_selector"
-            android:padding="12dp" />
-
-    </LinearLayout>
-    <LinearLayout
+    <Button
+        android:id="@+id/button_view_workouts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginBottom="24dp">
-        <Button
-            android:id="@+id/buttonExercises"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="View Exercises" />
+        android:text="View Workouts"
+        android:background="@drawable/button_selector"
+        android:textColor="@color/text_color_selector"
+        android:padding="12dp"
+        android:layout_marginBottom="8dp" />
 
-        <Button
-            android:id="@+id/buttonBmi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="BMI Calculator"
-             />
-    </LinearLayout>
+    <Button
+        android:id="@+id/buttonExercises"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View Exercises"
+        android:background="@drawable/button_selector"
+        android:textColor="@color/text_color_selector"
+        android:padding="12dp"
+        android:layout_marginBottom="8dp" />
+
+    <Button
+        android:id="@+id/buttonBmi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BMI Calculator"
+        android:background="@drawable/button_selector"
+        android:textColor="@color/text_color_selector"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp" />
+
     <!-- 🟩 Buton de logout -->
     <Button
         android:id="@+id/button_logout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Logout"
-         />
-
+        android:backgroundTint="#FF5252" />
 </LinearLayout>
