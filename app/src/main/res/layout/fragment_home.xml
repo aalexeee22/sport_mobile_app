@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- 🟩 Text cu numele utilizatorului -->
+    <!-- numele utilizatorului -->
     <TextView
         android:id="@+id/text_username"
         android:layout_width="wrap_content"
@@ -15,7 +15,6 @@
         android:textStyle="bold"
         android:layout_marginBottom="24dp" />
 
-    <!-- Text existent -->
     <TextView
         android:text="Home Menu"
         android:textSize="20sp"
@@ -23,7 +22,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp" />
 
-    <!-- Butoanele cu spatiu mic -->
     <Button
         android:id="@+id/button_add_workout"
         android:layout_width="match_parent"
@@ -64,7 +62,7 @@
         android:padding="12dp"
         android:layout_marginBottom="16dp" />
 
-    <!-- 🟩 Buton de logout -->
+    <!-- buton de logout -->
     <Button
         android:id="@+id/button_logout"
         android:layout_width="match_parent"
